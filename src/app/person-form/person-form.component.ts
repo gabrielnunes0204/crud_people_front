@@ -56,30 +56,30 @@ export class PersonFormComponent implements OnInit {
     }
   }
 
+  onCpfInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.cpf = input.value.replace(/\D/g, '');
+    input.value = this.cpf;
+  }
+
   sendRequestPut() {
     this.service.requestPut(this.person).subscribe({
       next: (response: SimpleResponse) => {
         if (response.isSuccess) {
           this.title = 'Sucesso';
           this.description = response.message;
+          this.showMessageReturnAndRedirect();
+          this.clearFields();
         } else {
           this.title = 'Erro';
+          this.description = response.message;
+          this.showMessageReturn();
         }
       },
       error: (error: any) => {
         console.error('Error:', error);
       },
-      complete: () => {
-        this.name = '';
-        this.cpf = '';
-        this.dateOfBirth = '';
-
-        this.showMessage = true;
-        setTimeout(() => {
-          this.showMessage = false;
-          this.router.navigate(['']);
-        }, 3000);
-      }
+      complete: () => { }
     });
   }
 
@@ -89,22 +89,18 @@ export class PersonFormComponent implements OnInit {
         if (response.isSuccess) {
           this.title = 'Sucesso';
           this.description = response.message;
+          this.showMessageReturnAndRedirect();
+          this.clearFields();
         } else {
           this.title = 'Erro';
+          this.description = response.message;
+          this.showMessageReturn();
         }
       },
       error: (error: any) => {
         console.error('Error:', error);
       },
-      complete: () => {
-        this.clearFields();
-
-        this.showMessage = true;
-        setTimeout(() => {
-          this.showMessage = false;
-          this.router.navigate(['']);
-        }, 3000);
-      }
+      complete: () => { }
     });
   }
 
@@ -142,5 +138,20 @@ export class PersonFormComponent implements OnInit {
     this.name = '';
     this.cpf = '';
     this.dateOfBirth = '';
+  }
+
+  showMessageReturnAndRedirect() {
+    this.showMessage = true;
+    setTimeout(() => {
+      this.showMessage = false;
+      this.router.navigate(['']);
+    }, 3000);
+  }
+
+  showMessageReturn() {
+    this.showMessage = true;
+    setTimeout(() => {
+      this.showMessage = false;
+    }, 3000);
   }
 }

@@ -38,6 +38,7 @@ export class PersonListComponent {
   ngOnInit(): void {
     this.sendRequestList();
     this.showMessage = false;
+    this.data.setNewPerson(null);
   }
 
   receiveUpdatePeoples(people: Person[]) {
@@ -65,9 +66,9 @@ export class PersonListComponent {
   sendRequestDelete() {
     this.service.requestDelete(this.selectedRegistry.id.toString()).subscribe({
       next: (response: SimpleResponse) => {
+        this.description = response.message;
         if (response.isSuccess) {
           this.title = 'Sucesso';
-          this.description = response.message;
         } else {
           this.title = 'Erro';
         }
