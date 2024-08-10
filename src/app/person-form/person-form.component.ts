@@ -109,7 +109,7 @@ export class PersonFormComponent implements OnInit {
   }
 
   validateFields(): boolean {
-    if (this.name == '' || this.cpf == '' || this.dateOfBirth == '') {
+    if (this.name == '' || this.cpf == '' || this.cpf.length < 11 || this.dateOfBirth == '') {
       return true;
     }
 
@@ -119,7 +119,7 @@ export class PersonFormComponent implements OnInit {
   checkOperation() {
     if (this.validateFields()) {
       this.title = 'Erro';
-      this.description = 'Há campos não preenchidos.';
+      this.description = 'Há campos preenchidos incorretamente.';
       this.showValidated = true;
       setInterval(() => {
         this.showValidated = false;
