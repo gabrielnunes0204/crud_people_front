@@ -1,0 +1,28 @@
+<div class="container-form">
+  <a href="#" [routerLink]="['']"> Voltar </a>
+
+  <div class="bloco1"></div>
+  <div class="bloco2">
+    <h1> Informações da pessoa </h1>
+    <div>
+      <section>
+        <label for="name"> Nome: </label>
+        <input type="text" id="name" [(ngModel)]="name">
+
+        <label for="cpf"> CPF: </label>
+        <input type="number" id="cpf" [(ngModel)]="cpf">
+
+        <label for="dateOfBirth"> Data de nascimento: </label>
+        <input type="date" id="dateOfBirth" [(ngModel)]="dateOfBirth">
+
+        <div>
+          <button (click)="clearFields()"> Limpar </button>
+          <button (click)="checkOperation()"> Enviar </button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <app-modal *ngIf="showMessage" [title]="title" [description]="description"></app-modal>
+  <app-modal *ngIf="showValidated" [title]="title" [description]="description"></app-modal>
+</div>

@@ -1,0 +1,86 @@
+.container-list {
+  height: 100vh;
+  width: 100vw;
+}
+
+table {
+  text-align: center;
+  border-collapse: collapse;
+  width: 70%;
+  margin: 1.5rem auto 0 auto;
+}
+
+table tr th {
+  background: #eee;
+}
+
+table tr th,
+table tr td {
+  padding: 15px;
+  border-bottom: 1px solid #222;
+}
+
+button {
+  font-weight: bold;
+  letter-spacing: 2px;
+  background: #4716F2;
+  color: #eee;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  box-shadow: 1px 1px 3px #999;
+  width: 100px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.pagination {
+  margin: 0 auto;
+  text-align: center;
+  padding: 15px;
+}
+
+.pagination span {
+  margin: 0 15px;
+}
+
+.group-buttons {
+  display: flex;
+}
+
+.group-buttons button {
+  width: 50px;
+  margin-right: 5px;
+  padding: 15px 10px;
+  background-size: 40%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.group-buttons .update {
+  background-image: url('../../../assets/images/lapis.png');
+}
+
+.group-buttons .delete {
+  background-image: url('../../../assets/images/lixeira.png');
+}
+
+.button-include button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #4716F2;
+  color: #eee;
+  border: none;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.button-include button:hover {
+  background: #000F84;
+}
+
+.selected {
+  background: #999;
+  cursor: auto;
+}

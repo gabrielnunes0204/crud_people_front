@@ -1,0 +1,41 @@
+<app-menu (peoplesUpdated)="receiveUpdatePeoples($event)"></app-menu>
+
+<div class="container-list">
+  <table>
+    <tr>
+      <th></th>
+      <th> ID </th>
+      <th> Nome </th>
+      <th> CPF </th>
+      <th> Data Nascimento </th>
+      <th> Ações </th>
+    </tr>
+    <tr *ngFor="let person of getPaginatedPeoples()">
+      <td>
+        <input type="radio" name="option" value="option" (change)="onRadioChange(person)">
+      </td>
+      <td> {{ person.id }} </td>
+      <td> {{ person.name }} </td>
+      <td> {{ person.cpf }} </td>
+      <td> {{ formateDate(person.dateOfBirth) }} </td>
+      <td>
+        <div class="group-buttons">
+          <button [disabled]="selectedRegistry != person" [ngClass]="{'selected': selectedRegistry != person}" class="update" (click)="sendRequestUpdate()"></button>
+          <button [disabled]="selectedRegistry != person" [ngClass]="{'selected': selectedRegistry != person}" class="delete" (click)="confirmDelete()"></button>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="pagination">
+    <button [disabled]="currentPage == 1" [ngClass]="{'selected': currentPage == 1}" (click)="goToPage(currentPage - 1)"> Anterior </button>
+    <span> Página {{ currentPage }} de {{ totalPages() }} </span>
+    <button [disabled]="totalPages() == 1" [ngClass]="{'selected': totalPages() < 2 || totalPages() == currentPage}" (click)="goToPage(currentPage + 1)"> Próxima </button>
+  </div>
+
+  <div class="button-include">
+    <button [routerLink]="['/form']"> Incluir </button>
+  </div>
+
+  <app-modal *ngIf="showMessage" [title]="title" [description]="description"></app-modal>
+</div>

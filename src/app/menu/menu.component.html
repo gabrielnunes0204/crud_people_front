@@ -1,0 +1,10 @@
+<div class="container-menu">
+  <div class="menu">
+    <h2 [routerLink]="['']"> CRUD </h2>
+    <div>
+      <input type="text" id="search" placeholder="Pesquise por CPF" [(ngModel)]="param">
+      <button (click)="sendRequestGetAll()"> X </button>
+      <button (click)="sendRequestByCpf()"> Pesquisar </button>
+    </div>
+  </div>
+</div>
