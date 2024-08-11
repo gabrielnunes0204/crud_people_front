@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  backendUrl: "http://localhost:8080/people"
+  backendUrl: "https://crud-people-back.onrender.com/people"
 }
